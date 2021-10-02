@@ -1,0 +1,10 @@
+package com.example.demo.model;
+
+
+public class College {
+
+	private double id;
+	private String collegeName;
+	private String userName;
+	
+}

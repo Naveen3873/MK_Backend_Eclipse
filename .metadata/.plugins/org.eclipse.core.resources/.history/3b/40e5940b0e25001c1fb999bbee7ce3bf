@@ -1,0 +1,11 @@
+package com.example.demo.model;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Login {
+
+	private Long id;
+	private String userName;
+	private String password;
+}

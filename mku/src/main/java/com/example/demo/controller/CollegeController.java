@@ -19,11 +19,11 @@ public class CollegeController {
 	public CollegeRepository CollegeRepo;
 	
 	@PostMapping(value = "/insert")
-	public ResponseEntity<?> insertCollege(@RequestBody final College n1){
-		CollegeRepo.save(n1);
+	public ResponseEntity<?> insertCollege(@RequestBody final College c){
+		CollegeRepo.save(c);
 		return ResponseEntity
 				.status(HttpStatus.OK)
-				.body("insert successfully");
+				.body("college insert successfully");
 		
 	}	
 }

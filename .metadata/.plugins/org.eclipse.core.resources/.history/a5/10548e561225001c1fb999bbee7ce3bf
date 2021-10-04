@@ -1,0 +1,22 @@
+package com.example.demo.controller;
+
+import org.apache.tomcat.jni.User;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.example.demo.loginservice.LoginService;
+
+@Controller
+public class LoginController {
+
+	private LoginService userService;
+	
+	@GetMapping("/login")
+	public ModelAndView login() {
+		ModelAndView mav = new ModelAndView("login");
+		mav.addObject("user", new User());
+		return mav;
+	}
+	
+}

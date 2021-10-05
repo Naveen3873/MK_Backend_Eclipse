@@ -1,0 +1,15 @@
+package com.example.demo.loginservice;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class LoginService {
+	
+//	private CollegeRepository repo;
+//	
+//	public User login(String userName, String password) {
+//		User user = repo.findByUserNameAndPassword(userName, password);
+//		return user;
+//	}
+
+}

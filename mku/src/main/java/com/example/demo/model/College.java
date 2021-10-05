@@ -1,9 +1,12 @@
 package com.example.demo.model;
 
+//import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class College {
@@ -17,6 +20,8 @@ public class College {
 	private long phoneNumber;
 	private String password;
 	private String collegeAddress;
+    @ManyToMany
+//    private Set<User> roles;
 	
 	public int getId() {
 		return id;
@@ -60,6 +65,11 @@ public class College {
 	public void setCollegeAddress(String collegeAddress) {
 		this.collegeAddress = collegeAddress;
 	}
-	
+//	public Set<User> getRoles() {
+//		return roles;
+//	}
+//	public void setRoles(Set<User> roles) {
+//		this.roles = roles;
+//	}
 	
 }

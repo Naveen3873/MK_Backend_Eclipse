@@ -1,0 +1,44 @@
+package com.example.demo.controller;
+
+import org.apache.tomcat.jni.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.example.demo.loginservice.LoginService;
+import com.example.demo.repo.CollegeRepository;
+
+@Controller
+public class LoginController {
+
+	@Autowired
+	private CollegeRepository clgrepo;
+	
+	
+    @ResponseBody
+    @GetMapping(path = "/login/{userName}")
+    public User getUserById(@PathVariable("userName") String userName) {
+
+        return clgrepo.findByUserNameAndPassword(userName, password)
+            LOG.info("Reading user with id " + userName + " from database.");
+            return login;
+        }).orElseThrow(() -> new UserNotFoundException("The user with the id " + id + " couldn't be found in the database."));
+    }
+
+//	public ModelAndView login() {
+//		ModelAndView mav = new ModelAndView("login");
+//		mav.addObject("user", new User());
+//		return mav;
+	}
+	
+//	@PostMapping("login")
+//	public String login(@ModelAttribute("user") User user) {
+//		User oauthUser = userService.login(user.getuserName(), user.getPassword())
+//	}
+	
+}

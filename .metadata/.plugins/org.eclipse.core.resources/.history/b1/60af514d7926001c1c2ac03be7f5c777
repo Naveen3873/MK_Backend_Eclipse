@@ -1,0 +1,43 @@
+package com.example.demo.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.model.College;
+import com.example.demo.model.Student;
+import com.example.demo.repo.CollegeRepository;
+import com.example.demo.repo.StudentRepository;
+
+@RestController
+@Controller
+@RequestMapping("/login")
+public class UserController {
+	
+	@Autowired
+	public CollegeRepository clgrepo;
+	@Autowired
+	public StudentRepository sturepo;
+	
+	@PostMapping
+	public ResponseEntity<?> findByUsernameAndPassword(@RequestBody final College cl){
+		clgrepo.findByUsernameAndPassword(cl.getUserName(), cl.getPassword());
+		return ResponseEntity
+				.status(HttpStatus.OK)
+				.body("login successfully");
+	
+	}
+
+//	@PostMapping
+//	public ResponseEntity<?> findByUsernameAndPassword(@RequestBody final Student st){
+//		sturepo.findByUsernameAndPassword(st.getUserName(), st.getPassword());
+//		return ResponseEntity
+//				.status(HttpStatus.OK)
+//				.body("login successfully");	
+//	}
+}

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,23 +20,59 @@ import com.example.demo.repo.CollegeRepository;
 public class CollegeController {
 
 	@Autowired
-	public CollegeRepository CollegeRepo;
+	public CollegeRepository collegeRepo;
 	
 	@PostMapping(value = "/insert")
 	public ResponseEntity<?> insertCollege(@RequestBody final College c){
-		CollegeRepo.save(c);
+		collegeRepo.save(c);
 		return ResponseEntity
 				.status(HttpStatus.OK)
 				.body("college insert successfully");
-		
 	}
 
 	@GetMapping(value = "/getAll")
 	public ResponseEntity<?> getAllColleges(){
-		ArrayList<College> colleges= (ArrayList<College>) CollegeRepo.findAll();
+		ArrayList<College> colleges= (ArrayList<College>) collegeRepo.findAll();
 		return ResponseEntity
 				.status(HttpStatus.OK)
 				.body(colleges);
 	}
+
+	@GetMapping(value = "/delete/{id}")
+	public ResponseEntity<?> deleteCollege(@PathVariable final int id){
+		collegeRepo.deleteById(id);
+		return ResponseEntity
+				.status(HttpStatus.OK)
+				.body("College deleted Successfully!");
+		
+	}
+
+	@GetMapping(value = "/get/{id}")
+	public ResponseEntity<?> getCollege(@PathVariable final int id){
+		College college = collegeRepo.findById(id).get();
+		return ResponseEntity
+				.status(HttpStatus.OK)
+				.body(college);
+	}
+	@PostMapping(value="/update")
+	public ResponseEntity<?> updateCollege(@RequestBody final College c){
+		collegeRepo.save(c);
+		return ResponseEntity
+				.status(HttpStatus.OK)
+				.body("Student saved successfully!");
+	}	
 	
+
+	@PostMapping(value = "/user")	
+	public ResponseEntity<?> findByUsernameAndPassword(@RequestBody final College cl){
+		College college = (College) collegeRepo.findByUsernameAndPassword(cl.getUserName(), cl.getPassword());
+		if(college!=null)
+			return ResponseEntity
+					.status(HttpStatus.OK)
+					.body("login successfully");
+		else
+			return ResponseEntity
+					.status(HttpStatus.BAD_REQUEST)
+					.body("login failed");		
+	}
 }

@@ -59,7 +59,7 @@ public class CollegeController {
 		collegeRepo.save(c);
 		return ResponseEntity
 				.status(HttpStatus.OK)
-				.body("Student saved successfully!");
+				.body("College update successfully!");
 	}	
 	
 

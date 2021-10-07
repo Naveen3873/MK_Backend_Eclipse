@@ -1,0 +1,50 @@
+package com.example.demo.model;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class SacsCollegeFaculty {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+	private String facultyName;
+	private String facultyQualification;
+	private String facultyExperience;
+	private String facultySkill;
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getFacultyName() {
+		return facultyName;
+	}
+	public void setFacultyName(String facultyName) {
+		this.facultyName = facultyName;
+	}
+	public String getFacultyQualification() {
+		return facultyQualification;
+	}
+	public void setFacultyQualification(String facultyQualification) {
+		this.facultyQualification = facultyQualification;
+	}
+	public String getFacultyExperience() {
+		return facultyExperience;
+	}
+	public void setFacultyExperience(String facultyExperience) {
+		this.facultyExperience = facultyExperience;
+	}
+	public String getFacultySkill() {
+		return facultySkill;
+	}
+	public void setFacultySkill(String facultySkill) {
+		this.facultySkill = facultySkill;
+	}
+	
+}

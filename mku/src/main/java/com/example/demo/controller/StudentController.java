@@ -46,6 +46,22 @@ public class StudentController {
 				.status(HttpStatus.OK)
 				.body("Student deleted Successfully!");
 	}
+
+	@GetMapping(value = "/get/{id}")
+	public ResponseEntity<?> getStudent(@PathVariable final int id){
+		Student student = studentRepo.findById(id).get();
+		return ResponseEntity
+				.status(HttpStatus.OK)
+				.body(student);
+	}
+	@PostMapping(value="/update")
+	public ResponseEntity<?> updateStudent(@RequestBody final Student s){
+		studentRepo.save(s);
+		return ResponseEntity
+				.status(HttpStatus.OK)
+				.body("update successfully!");
+	}	
+	
 	@PostMapping(value = "/user")	
 	public ResponseEntity<?> findByUsernameAndPassword(@RequestBody final College st){
 		Student student = (Student) studentRepo.findByUsernameAndPassword(st.getUserName(), st.getPassword());

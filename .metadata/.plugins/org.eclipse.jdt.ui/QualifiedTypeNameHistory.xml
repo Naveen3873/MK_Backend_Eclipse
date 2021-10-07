@@ -32,9 +32,11 @@
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
     <fullyQualifiedTypeName name="com.example.demo.repo.StudentRepository"/>
     <fullyQualifiedTypeName name="com.example.demo.model.Student"/>
-    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="javax.persistence.Entity"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMethod"/>
     <fullyQualifiedTypeName name="com.example.demo.model.College"/>
+    <fullyQualifiedTypeName name="com.example.demo.repo.AdminRepository"/>
+    <fullyQualifiedTypeName name="com.example.demo.model.Admin"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
 </qualifiedTypeNameHistroy>

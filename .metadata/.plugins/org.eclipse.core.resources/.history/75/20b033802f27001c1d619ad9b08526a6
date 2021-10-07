@@ -1,0 +1,28 @@
+package com.example.demo.controller;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.model.College;
+
+@RestController
+@RequestMapping(value="/admin")
+public class AdminController {
+
+	@PostMapping(value = "/user")	
+	public ResponseEntity<?> findByUsernameAndPassword(@RequestBody final College cl){
+		College college = (College) collegeRepo.findByUsernameAndPassword(cl.getUserName(), cl.getPassword());
+		if(college!=null)
+			return ResponseEntity
+					.status(HttpStatus.OK)
+					.body("login successfully");
+		else
+			return ResponseEntity
+					.status(HttpStatus.BAD_REQUEST)
+					.body("login failed");		
+	}	
+}

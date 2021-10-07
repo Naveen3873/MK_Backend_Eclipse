@@ -1,0 +1,10 @@
+package com.example.demo.controller;
+
+public class CollegeFaculty {
+
+	private int id;
+	private String facultyName;
+	private String facultyQualification;
+	private String facultyName;
+	private String facultyName;
+}

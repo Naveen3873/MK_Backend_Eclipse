@@ -21,13 +21,18 @@ public class AdminController {
 	@PostMapping(value = "/user")	
 	public ResponseEntity<?> findByUsernameAndPassword(@RequestBody final Admin ad){
 		Admin admin = (Admin) adminRepo.findByUsernameAndPassword(ad.getUserName(), ad.getPassword());
-		if(admin!=null)
+		int id;
+		
+		if(admin!=null) {
+			id = admin.getId();
 			return ResponseEntity
 					.status(HttpStatus.OK)
-					.body("login successfully");
-		else
+					.body(id);
+		}
+		else {
 			return ResponseEntity
 					.status(HttpStatus.BAD_REQUEST)
 					.body("login failed");		
+		}
 	}	
 }

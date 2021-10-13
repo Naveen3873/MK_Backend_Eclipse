@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.College;
+import com.example.demo.model.ColllegeResponse;
 import com.example.demo.repo.CollegeRepository;
+import com.example.demo.repo.ResponseRepository;
 
 @RestController
 @RequestMapping(value="/college")
@@ -21,6 +23,8 @@ public class CollegeController {
 
 	@Autowired
 	public CollegeRepository collegeRepo;
+	@Autowired
+	ResponseRepository responseRepo;
 	
 	@PostMapping(value = "/insert")
 	public ResponseEntity<?> insertCollege(@RequestBody final College c){
@@ -79,6 +83,14 @@ public class CollegeController {
 					.status(HttpStatus.BAD_REQUEST)
 					.body("login failed");
 		}
+	}
+	
+	@PostMapping(value = "/response")
+	public ResponseEntity<?> sendResponse(@RequestBody final ColllegeResponse sr){
+		responseRepo.save(sr);
+		return ResponseEntity
+				.status(HttpStatus.OK)
+				.body("response send successfully");
 	}
 	
 }
